@@ -1,0 +1,22 @@
+{
+    "name": "jgrim/klarna-core",
+    "description": "Core PHP SDK for restful integration of Klarna products",
+    "keywords": ["klarna", "payments", "rest", "sdk"],
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Jason Grim",
+            "email": "me@jasongrim.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "KlarnaCore\\": "src/"
+        }
+    }
+}
