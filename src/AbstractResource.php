@@ -15,18 +15,31 @@ abstract class Resource
 
     protected $client;
 
-    public function __construct($mid, $secret, $environment = self::ENVIRONMENT_PLAYGROUND_NA, array $clientOptions = array()
-    ) {
+    /**
+     * Resource constructor.
+     *
+     * @param string $mid
+     * @param string $secret
+     * @param string $environment
+     * @param array  $clientOptions
+     */
+    public function __construct($mid, $secret, $environment = self::ENVIRONMENT_PLAYGROUND_NA, array $clientOptions = [])
+    {
         $this->mid         = $mid;
         $this->secret      = $secret;
         $this->environment = $environment;
 
-        $this->client = new \GuzzleHttp\Client(array_merge($clientOptions, array(
+        $this->client = new \GuzzleHttp\Client(array_merge($clientOptions, [
             'base_uri' => $this->getBaseUrl(),
-            'auth'     => array($this->mid, $this->secret)
-        )));
+            'auth'     => [$this->mid, $this->secret]
+        ]));
     }
 
+    /**
+     * Get the base URL for the environment
+     *
+     * @return string
+     */
     protected function getBaseUrl()
     {
         switch ($this->environment) {
